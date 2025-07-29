@@ -9,13 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body background="image/playground.jpg" class="body_deg">
     <center>
         <div class="form_deg">
             <center class="title_deg">
                 Login Form
             </center>
-            <form class="login_form" action="">
+            <form class="login_form" action="login_check.php" method="POST">
                 <div>
                     <div>
                         <label class="label_deg" for="">Username</label>

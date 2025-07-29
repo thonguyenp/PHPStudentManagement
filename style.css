@@ -181,4 +181,14 @@ footer
     color: white;
     text-align: center;
     font-weight: bold;
+    width: 400px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.body_deg
+{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }

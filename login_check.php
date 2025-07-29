@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     $host = "localhost";
     $password = "";
     $user = "root";
@@ -29,7 +30,10 @@
         }
         else 
         {
-            echo "Username or Password do not match";
+            session_start();
+            $message = "Username or Password do not match";
+            $_SESSION['loginMessage'] = $message;
+            header("location: login.php");
         }
 
 

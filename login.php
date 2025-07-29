@@ -14,6 +14,14 @@
         <div class="form_deg">
             <center class="title_deg">
                 Login Form
+                <h5>
+                    <?php
+                        error_reporting(0);
+                        session_start();
+                        session_destroy();
+                        echo $_SESSION["loginMessage"];
+                    ?>
+                </h5>
             </center>
             <form class="login_form" action="login_check.php" method="POST">
                 <div>

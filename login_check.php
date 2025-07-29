@@ -1,5 +1,6 @@
 <?php
     error_reporting(0);
+    session_start();
     $host = "localhost";
     $password = "";
     $user = "root";
@@ -22,10 +23,14 @@
 
         if ($row["usertype"] == "student")
         {
+            $_SESSION["username"] = $username;
+            $_SESSION["usertype"] = "student";
             header("location: studenthome.php");
         }
         else if ($row["usertype"] == "admin")
         {
+            $_SESSION["username"] = $username;
+            $_SESSION["usertype"] = "admin";
             header("location: adminhome.php");
         }
         else 

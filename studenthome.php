@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    // Nếu cố vào home khi chưa login => trả về login.php
+    if (!isset($_SESSION["username"]) or $_SESSION["usertype"] != "student")
+    {
+        header("location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

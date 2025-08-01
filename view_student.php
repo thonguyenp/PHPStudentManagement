@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     session_start();
     // Nếu cố vào home khi chưa login => trả về login.php
     if (!isset($_SESSION["username"]) or $_SESSION["usertype"] != "admin")
@@ -50,12 +51,20 @@
     <div class="content">
         <center>
             <h1>Student Data</h1>
+            <?php
+                if ($_SESSION["message"])
+                {
+                    echo $_SESSION["message"];
+                }
+                unset($_SESSION["message"]);
+            ?>
             <table>
                 <tr>
                     <th>UserName</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Password</th>
+                    <th>Delete</th>
                 </tr>
                 <?php
                     while ($info = $result -> fetch_assoc())
@@ -84,6 +93,13 @@
                                 echo "{$info["password"]}";
                             ?>
                         </td>
+                        <td>
+                            <?php
+                                echo "<a onClick=\"javascript:return confirm('Sure to delete this ?')\" href='delete.php?student_id={$info["id"]}'>
+                                Delete</a>";
+                            ?>
+                        </td>
+
                     </tr>
 
                 <?php

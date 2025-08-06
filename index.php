@@ -8,6 +8,17 @@
         $message = $_SESSION["message"];
         echo "<script type = 'text/javascript'> alert('$message'); </script>";
     }
+
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $db = "schoolproject";
+
+    $data = mysqli_connect($host, $user, $password, $db);
+
+    $sql = "select * from teacher";
+
+    $result = mysqli_query($data, $sql);
 ?>
 
 
@@ -68,23 +79,20 @@
     </center>
     <div class="container">
         <div class="row">
+            <?php
+                while ($info = $result -> fetch_assoc())
+                {
+
+                
+            ?>
             <!-- Teacher 1 -->
             <div class="col-md-4">
-                <img class="teacher" src="image/teacher1.png" alt="">
-                <p>"eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <img class="teacher" src="<?php echo "{$info["image"]}";?>" alt="">
+                <h3><?php echo "{$info["name"]}"; ?></h3>
+                <h3><?php echo "{$info["description"]}"; ?></h3>
             </div>
-            <!-- Teacher 2 -->
-            <div class="col-md-4">
-                <img class="teacher" src="image/teacher2.png" alt="">
-                <p>"eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-
-            </div>
-            <!-- Teacher 3 -->
-            <div class="col-md-4">
-                <img class="teacher" src="image/teacher3.png" alt="">
-                <p>"eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-
-            </div>
+            <?php
+                }?>
 
         </div>
     </div>

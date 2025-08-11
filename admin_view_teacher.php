@@ -59,6 +59,7 @@ $result = mysqli_query($data, $sql);
                     <th>Teacher Name</th>
                     <th>About Teacher</th>
                     <th>Teacher Image</th>
+                    <th>Delete</th>
 
                 </tr>
                 <?php
@@ -80,6 +81,11 @@ $result = mysqli_query($data, $sql);
                             <img height="100px" width="100px" src="<?php
                             echo "{$info["image"]}";
                             ?>" alt="">
+                        </td>
+                        <td>
+                            <?php
+                               echo "<a class='btn btn-danger' href=''>Delete</a>";
+                            ?>
                         </td>
                     </tr>
                 <?php

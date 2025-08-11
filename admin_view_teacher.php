@@ -1,20 +1,32 @@
 <?php
-session_start();
-// Nếu cố vào home khi chưa login => trả về login.php
-if (!isset($_SESSION["username"]) or $_SESSION["usertype"] != "admin") {
-    header("location: login.php");
-}
+    session_start();
+    error_reporting(0);
+    // Nếu cố vào home khi chưa login => trả về login.php
+    if (!isset($_SESSION["username"]) or $_SESSION["usertype"] != "admin") {
+        header("location: login.php");
+    }
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$db = "schoolproject";
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $db = "schoolproject";
 
-$data = mysqli_connect($host, $user, $password, $db);
+    $data = mysqli_connect($host, $user, $password, $db);
 
-$sql = "select * from teacher";
-$result = mysqli_query($data, $sql);
+    $sql = "select * from teacher";
+    $result = mysqli_query($data, $sql);
 
+    if ($_GET['teacher_id'])
+    {
+        $t_id = $_GET['teacher_id'];
+        $sql2 = "delete from teacher where id = '$t_id'";
+        $result2 = mysqli_query($data,$sql2);
+
+        if ($result2)
+        {
+            header('location: admin_view_teacher.php');
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +96,7 @@ $result = mysqli_query($data, $sql);
                         </td>
                         <td>
                             <?php
-                               echo "<a class='btn btn-danger' href=''>Delete</a>";
+                               echo "<a onClick= \"javascript:return confirm ('Are you sure to delete this?')\" class='btn btn-danger' href='admin_view_teacher.php?teacher_id={$info['id']}'>Delete</a>";
                             ?>
                         </td>
                     </tr>

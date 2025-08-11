@@ -100,6 +100,11 @@
                                echo "<a onClick= \"javascript:return confirm ('Are you sure to delete this?')\" class='btn btn-danger' href='admin_view_teacher.php?teacher_id={$info['id']}'>Delete</a>";
                             ?>
                         </td>
+                        <td>
+                            <?php
+                                echo "<a class='btn btn-primary' href='admin_update_teacher.php?teacher_id={$info['id']}'>Update</a>";
+                            ?>
+                        </td>
                     </tr>
                 <?php
                 }
